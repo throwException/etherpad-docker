@@ -1,0 +1,9 @@
+{
+  "name": "ep_exception",
+  "description": "",
+  "private": true,
+  "dependencies": {
+    "ep_etherpad",
+    "ep_oauth2": "^0.1.4"
+  }
+}

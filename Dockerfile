@@ -19,19 +19,20 @@ RUN apt-get update && apt-get install -y \
   libssl-dev \
   pkg-config \
   python \
-  supervisor \
-  
-  && rm -rf /var/lib/apt/lists/*
+  supervisor
 
+RUN ln -fs /usr/share/zoneinfo/Europe/Zurich /etc/localtime && dpkg-reconfigure -f noninteractive tzdata
 
-# Grab the latest Git version
 RUN cd /opt && git clone https://github.com/ether/etherpad-lite.git etherpad
-
-# Install node dependencies
 RUN /opt/etherpad/bin/installDeps.sh
+RUN echo "3"
+RUN cd /opt/etherpad && git clone https://github.com/throwException/ep_oauth2 && npm install ep_oauth2
+RUN cd /opt/etherpad && npm install ep_adminpads
+RUN cd /opt/etherpad && npm install ep_disable_change_author_name
+RUN cd /opt/etherpad && npm install ep_pad-lister
+RUN cd /opt/etherpad && npm install ep_set_title_on_pad
 
 # Add conf files
-ADD settings.json /opt/etherpad/settings.json
 ADD supervisor.conf /etc/supervisor/supervisor.conf
 
 EXPOSE 9001

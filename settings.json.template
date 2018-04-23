@@ -1,0 +1,96 @@
+{
+  "title": "Etherpad",
+  "favicon": "favicon.ico",
+  "ip": "0.0.0.0",
+  "port" : 9001,
+
+   "dbType" : "postgres",
+   "dbSettings" : {
+                    "user"    : "etherpad",
+                    "host"    : "172.17.0.1",
+                    "password": "secret",
+                    "database": "etherpad",
+                    "charset" : "utf8mb4"
+                  },
+
+  "defaultPadText" : "Welcome to Etherpad!\n\nThis pad text is synchronized as you type, so that everyone viewing this page sees the same text. This allows you to collaborate seamlessly on documents!\n\nGet involved with Etherpad at http:\/\/etherpad.org\n",
+  "padOptions": {
+    "noColors": false,
+    "showControls": true,
+    "showChat": true,
+    "showLineNumbers": true,
+    "useMonospaceFont": false,
+    "userName": false,
+    "userColor": false,
+    "rtl": false,
+    "alwaysShowChat": false,
+    "chatAndUsers": false,
+    "lang": "en-gb"
+  },
+  "suppressErrorsInPadText" : false,
+  "requireSession" : false,
+  "editOnly" : false,
+  "sessionNoPassword" : false,
+  "minify" : true,
+  "maxAge" : 21600,
+  "abiword" : null,
+  "soffice" : null,
+  "tidyHtml" : null,
+  "allowUnknownFileEnds" : true,
+  "requireAuthentication" : true,
+  "requireAuthorization" : true,
+  "trustProxy" : false,
+  "disableIPlogging" : false,
+  "users": {
+    "oauth2": {
+      "authorizationURL": "http://192.168.23.101:8080/auth/realms/master/protocol/openid-connect/auth",
+      "tokenURL": "http://192.168.23.101:8080/auth/realms/master/protocol/openid-connect/token",
+      "clientID": "etherpad",
+      "clientSecret": "57be0975-6bf0-4ea9-98b7-08433b5d6cbc",
+      "publicURL": "http://192.168.23.101:8081",
+      "userinfoURL": "http://192.168.23.101:8080/auth/realms/master/protocol/openid-connect/userinfo",
+      "usernameKey": "name",
+      "useridKey": "preferred_username"
+    }
+  },
+  "socketTransportProtocols" : ["xhr-polling", "jsonp-polling", "htmlfile"],
+  "loadTest": false,
+
+  // Disable indentation on new line when previous line ends with some special chars (':', '[', '(', '{')
+  /*
+  "indentationOnNewLine": false,
+  */
+
+  /* The toolbar buttons configuration.
+  "toolbar": {
+    "left": [
+      ["bold", "italic", "underline", "strikethrough"],
+      ["orderedlist", "unorderedlist", "indent", "outdent"],
+      ["undo", "redo"],
+      ["clearauthorship"]
+    ],
+    "right": [
+      ["importexport", "timeslider", "savedrevision"],
+      ["settings", "embed"],
+      ["showusers"]
+    ],
+    "timeslider": [
+      ["timeslider_export", "timeslider_returnToPad"]
+    ]
+  },
+  */
+
+  "loglevel": "INFO",
+
+  "logconfig" :
+    { "appenders": [
+        { "type": "console"
+        }
+      , { "type": "file"
+      , "filename": "/var/log/etherpad.log"
+      , "maxLogSize": 1048576
+      , "backups": 3
+        }
+      ]
+    }
+}
