@@ -2,8 +2,8 @@
 
 docker stop etherpad
 docker rm etherpad
-docker run -it \
+docker run -d \
 --name etherpad \
--p 8081:9001 \
+-p 8085:9001 \
 -v ${PWD}/settings.json:/etc/settings.json \
 etherpad $1

@@ -25,12 +25,13 @@ RUN ln -fs /usr/share/zoneinfo/Europe/Zurich /etc/localtime && dpkg-reconfigure 
 
 RUN cd /opt && git clone https://github.com/ether/etherpad-lite.git etherpad
 RUN /opt/etherpad/bin/installDeps.sh
-RUN echo "3"
-RUN cd /opt/etherpad && git clone https://github.com/throwException/ep_oauth2 && npm install ep_oauth2
+RUN echo "1"
 RUN cd /opt/etherpad && npm install ep_adminpads
 RUN cd /opt/etherpad && npm install ep_disable_change_author_name
-RUN cd /opt/etherpad && npm install ep_pad-lister
-RUN cd /opt/etherpad && npm install ep_set_title_on_pad
+RUN echo "7"
+RUN cd /opt/etherpad && npm install https://github.com/throwException/ep_oauth2
+RUN cd /opt/etherpad && npm install https://github.com/throwException/ep_group_access
+RUN cd /opt/etherpad && npm install https://github.com/throwException/ep_set_title_on_pad
 
 # Add conf files
 ADD supervisor.conf /etc/supervisor/supervisor.conf
